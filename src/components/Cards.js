@@ -19,14 +19,18 @@ export const SingleCard = (props) => {
                     <a href="#" className="save">Save location</a>
                 </div>
                 <div className="body">
-                    <div className="temp">
+                    <div className="temp flex-container">
                         <div className="img-container">
                             <img src={cloudy} />
                         </div>
-                        <div className="description">
-                            <p>{tempInFahrenheit} &#xb0;</p>
-                            <p>{weatherDescription.description}</p>
+                        <div className="main-description">
+                            <p className="title-md">{tempInFahrenheit} &#xb0;F</p>
+                            <p className="title-sm">{weatherDescription.description}</p>
                         </div>
+                    </div>
+                    <div className="misc-description">
+                        <p>Sunrise: {data.sunrise}</p>
+                        <p>Sunset: {data.sunset}</p>
                     </div>
                 </div>
             </div>

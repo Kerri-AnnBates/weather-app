@@ -50,6 +50,14 @@ a {
   flex-wrap: wrap;
 }
 
+.title-md {
+  font-size: 2.5rem;
+}
+
+.title-sm {
+  font-size: 2rem;
+}
+
 /* Header */
 
 header {
@@ -114,4 +122,8 @@ nav {
   max-width: 500px;
   width: 100%;
   margin: auto;
+}
+
+.temp .img-container {
+  width: 30%;
 }
