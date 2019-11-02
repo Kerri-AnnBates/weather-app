@@ -1,10 +1,12 @@
 import React from 'react';
 
-const SearchForm = () => {
+const SearchForm = (props) => {
+    const { handleChange, handleSubmit } = props;
+
     return (
         <div className="search-form">
-            <form>
-                <input type="text" placeholder="Search a location" />
+            <form onSubmit={handleSubmit}>
+                <input type="text" placeholder="Search a location" onChange={(e) => handleChange(e)} />
             </form>
         </div>
     )

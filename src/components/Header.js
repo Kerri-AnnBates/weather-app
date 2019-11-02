@@ -3,7 +3,9 @@ import '../App.css';
 import SearchForm from './SearchForm';
 import logo from '../images/weather.png';
 
-const Header = () => {
+const Header = (props) => {
+    const { handleChange, handleSubmit } = props;
+
     return (
         <header>
             <div className="container">
@@ -13,7 +15,10 @@ const Header = () => {
                         <ul className="flex-container">
                             <li><a href="#">Your Location</a></li>
                             <li><a href="#">Saved Location</a></li>
-                            <SearchForm />
+                            <SearchForm 
+                                handleChange={handleChange} 
+                                handleSubmit={handleSubmit}
+                            />
                         </ul>
                     </nav>
                 </div>
