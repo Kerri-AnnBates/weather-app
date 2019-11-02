@@ -1,4 +1,8 @@
 import React from 'react';
+import sunnyImg from '../images/sunlight.png';
+import rainyImg from '../images/rain.png';
+import snow from '../images/snow.png';
+import cloudy from '../images/weather.png';
 
 export const SingleCard = (props) => {
     const { data, weatherDescription } = props;
@@ -16,8 +20,13 @@ export const SingleCard = (props) => {
                 </div>
                 <div className="body">
                     <div className="temp">
-                        <p>{tempInFahrenheit} &#xb0;</p>
-                        <p>{weatherDescription.description}</p>
+                        <div className="img-container">
+                            <img src={cloudy} />
+                        </div>
+                        <div className="description">
+                            <p>{tempInFahrenheit} &#xb0;</p>
+                            <p>{weatherDescription.description}</p>
+                        </div>
                     </div>
                 </div>
             </div>
