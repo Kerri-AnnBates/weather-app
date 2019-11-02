@@ -68,3 +68,9 @@ nav .flex-container {
 nav {
   width: 50%;
 }
+
+/* Time block */
+
+.time-block {
+  padding: 2rem 0;
+}
