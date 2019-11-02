@@ -1,13 +1,16 @@
 /* Global */
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   font-size: 62.5%;
 }
 
 body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   font-size: 1.8rem;
 }
 
@@ -47,6 +50,7 @@ a {
 
 header {
   background: #03A678;
+  padding: 2rem 0;
 }
 
 header a {
@@ -73,4 +77,29 @@ nav {
 
 .time-block {
   padding: 2rem 0;
+}
+
+/* Cards */
+
+.card {
+  border: 1px solid #ccc;
+}
+
+.card .header {
+  background: #03A678;
+  padding: 1rem;
+  color: #fff;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.card .body {
+  padding: 1rem;
+}
+
+.main-card-container .card {
+  max-width: 500px;
+  width: 100%;
+  margin: auto;
 }

@@ -17,8 +17,7 @@ const TimeBlock = () => {
         minutes: mins
     });
 
-    console.log("Hour", time.hour);
-    console.log("minutes", time.minutes);
+    console.log("Date", today);
     return (
         <div className="time-block">
             <div className="container">
