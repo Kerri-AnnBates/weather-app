@@ -56,6 +56,7 @@ function App() {
       <Header 
         handleChange={handleChange}
         handleSubmit={handleSubmit} 
+        userInput={userInput}
       />
         <TimeBlock />
         <SingleCard 

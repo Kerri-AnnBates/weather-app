@@ -4,7 +4,7 @@ import SearchForm from './SearchForm';
 import logo from '../images/weather.png';
 
 const Header = (props) => {
-    const { handleChange, handleSubmit } = props;
+    const { handleChange, handleSubmit, userInput } = props;
 
     return (
         <header>
@@ -18,6 +18,7 @@ const Header = (props) => {
                             <SearchForm 
                                 handleChange={handleChange} 
                                 handleSubmit={handleSubmit}
+                                userInput={userInput}
                             />
                         </ul>
                     </nav>
