@@ -26,7 +26,6 @@ function App() {
       })
   }, [])
 
-  console.log("State is: ", location.state);
   // Get weather data based on location.
   useEffect(() => {
     axios.get(`https://api.weatherbit.io/v2.0/current?city=${location.city},${location.state}&key=639ea7a56a0443ff83b858ea2fdc7e71`)
@@ -48,7 +47,8 @@ function App() {
   // Handle submit of search form
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLocation(userInput);
+    setLocation({ ...location, city: userInput.split(', ')[0], state: userInput.split(', ')[1]});
+    setUserInput('');
   }
 
   return (
