@@ -42,7 +42,7 @@ function App() {
       })
   }, [location, savedLocations]);
 
-  // Handle change to sseach form.
+  // Handle change to seach form.
   const handleChange = (e) => {
     setUserInput(e.target.value);
   }
@@ -83,7 +83,6 @@ function App() {
               <SavedLocationCard 
                 key={index}
                 location={location}
-                weatherDescription={weatherDescription}
               />
             ))}
           </div>

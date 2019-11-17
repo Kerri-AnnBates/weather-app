@@ -13,7 +13,7 @@ const SavedLocationCard = (props) => {
                 <div className="temp flex-container">
                     <div className="main-description">
                         <p className="title-md">{tempInFahrenheit} &#xb0;F</p>
-                        <p className="title-sm">{weatherDescription.description}</p>
+                        <p className="title-sm">{location.weather.description}</p>
                     </div>
                 </div>
             </div>
