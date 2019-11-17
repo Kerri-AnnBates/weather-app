@@ -1,7 +1,7 @@
 import React from 'react'
 
 const SavedLocationCard = (props) => {
-    const { location, weatherDescription } = props;
+    const { location } = props;
 
     const tempToFahrenheit = (temp) => (temp * 9 / 5) + 32;
     const tempInFahrenheit = tempToFahrenheit(location.temp);
