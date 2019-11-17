@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
 import Header from './components/Header';
 import TimeBlock from './components/TimeBlock';
-import { SingleCard } from './components/Cards';
+import { SingleCard } from './components/SingleCard';
 
 function App() {
   const [data, setData] = useState([]);
@@ -13,13 +13,14 @@ function App() {
     state: ''
   });
   const [userInput, setUserInput] = useState('');
+  const [savedLocations, setSavedLocations] = useState([]);
 
   // Get geo location
   useEffect(() => {
     axios.get('https://api.ipdata.co?api-key=4ccc16c61a91167bfa77f15dcd58e3348b29874c454764fc14843b2a')
       .then(res => {
         // console.log("Location: ", res.data);
-        setLocation({ ...location, city: res.data.city, state: res.data.region_code});
+        setLocation({ ...location, city: res.data.city, state: res.data.region_code });
       })
       .catch(err => {
         console.log("Error: ", err);
@@ -36,8 +37,9 @@ function App() {
       })
       .catch(err => {
         console.log("Error: ", err);
+        // alert('Sorry, no results from your search. Please ensure "City, ST" entry.');
       })
-  }, [location]);
+  }, [location, savedLocations]);
 
   // Handle change to sseach form.
   const handleChange = (e) => {
@@ -47,22 +49,36 @@ function App() {
   // Handle submit of search form
   const handleSubmit = (e) => {
     e.preventDefault();
-    setLocation({ ...location, city: userInput.split(', ')[0], state: userInput.split(', ')[1]});
+    setLocation({ ...location, city: userInput.split(', ')[0], state: userInput.split(', ')[1] });
     setUserInput('');
   }
 
+  // Save the location and add to collection of saved locations.
+  const saveLocation = (location) => {
+    setSavedLocations([...savedLocations, location]);
+  }
+
+  console.log("saved location:", savedLocations);
+
   return (
     <div className="App">
-      <Header 
+      <Header
         handleChange={handleChange}
-        handleSubmit={handleSubmit} 
+        handleSubmit={handleSubmit}
         userInput={userInput}
       />
-        <TimeBlock />
-        <SingleCard 
-          data={data} 
-          weatherDescription={weatherDescription} 
-        />
+      <TimeBlock />
+      <SingleCard
+        data={data}
+        weatherDescription={weatherDescription}
+        saveLocation={saveLocation}
+      />
+      <div className="saved-container" id="saved-location">
+        <div className="container">
+          <h3>Saved Locations</h3>
+
+        </div>
+      </div>
     </div>
   );
 }

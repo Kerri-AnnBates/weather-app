@@ -10,11 +10,11 @@ const Header = (props) => {
         <header>
             <div className="container">
                 <div className="flex-container header-wrapper">
-                    <div className="logo"><img src={logo} /></div>
+                    <div className="logo"><img src={logo} alt="weather app" /></div>
                     <nav>
                         <ul className="flex-container">
-                            <li><a href="#">Your Location</a></li>
-                            <li><a href="#">Saved Location</a></li>
+                            {/* <li><a href="#">Your Location</a></li> */}
+                            <li><a href="#saved-locations">Saved Location</a></li>
                             <SearchForm 
                                 handleChange={handleChange} 
                                 handleSubmit={handleSubmit}
