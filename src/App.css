@@ -127,3 +127,16 @@ nav {
 .temp .img-container {
   width: 30%;
 }
+
+.saved-card {
+  width: 30%;
+}
+
+.saved-card .body, .saved-card header {
+  padding: 1rem;
+}
+
+.saved-card header {
+  background: #16405B;
+  color: #E8E8E8;
+}

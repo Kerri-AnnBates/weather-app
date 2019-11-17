@@ -4,6 +4,7 @@ import axios from 'axios';
 import Header from './components/Header';
 import TimeBlock from './components/TimeBlock';
 import { SingleCard } from './components/SingleCard';
+import SavedLocationCard from './components/SavedLocationCard';
 
 function App() {
   const [data, setData] = useState([]);
@@ -76,7 +77,16 @@ function App() {
       <div className="saved-container" id="saved-location">
         <div className="container">
           <h3>Saved Locations</h3>
-
+          <div className="saved-wrapper">
+            {/* Saved location cards */}
+            {(savedLocations.length > 0) && savedLocations.map((location, index) => (
+              <SavedLocationCard 
+                key={index}
+                location={location}
+                weatherDescription={weatherDescription}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
