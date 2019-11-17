@@ -77,7 +77,7 @@ function App() {
       <div className="saved-container" id="saved-location">
         <div className="container">
           <h3>Saved Locations</h3>
-          <div className="saved-wrapper">
+          <div className="saved-wrapper flex-container">
             {/* Saved location cards */}
             {(savedLocations.length > 0) && savedLocations.map((location, index) => (
               <SavedLocationCard 
