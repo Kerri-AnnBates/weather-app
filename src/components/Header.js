@@ -14,13 +14,13 @@ const Header = (props) => {
                     <nav>
                         <ul className="flex-container">
                             {/* <li><a href="#">Your Location</a></li> */}
-                            <li><a href="#saved-locations">Saved Location</a></li>
-                            <SearchForm 
-                                handleChange={handleChange} 
-                                handleSubmit={handleSubmit}
-                                userInput={userInput}
-                            />
+                            {/* <li><a href="#saved-locations">Saved Location</a></li> */}
                         </ul>
+                        <SearchForm
+                            handleChange={handleChange}
+                            handleSubmit={handleSubmit}
+                            userInput={userInput}
+                        />
                     </nav>
                 </div>
             </div>

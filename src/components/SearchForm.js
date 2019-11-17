@@ -6,11 +6,13 @@ const SearchForm = (props) => {
     return (
         <div className="search-form">
             <form onSubmit={handleSubmit}>
+                <label htmlFor="search"> Search location:
                 <input 
                     type="text" 
-                    placeholder="Search a location" 
+                    placeholder="City, St" 
+                    name="search"
                     value={userInput} 
-                    onChange={(e) => handleChange(e)} />
+                        onChange={(e) => handleChange(e)} /></label>
             </form>
         </div>
     )
