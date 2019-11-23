@@ -16,7 +16,7 @@ function App() {
   const [userInput, setUserInput] = useState('');
   const [savedLocations, setSavedLocations] = useState([]);
 
-  // Get geo location
+  // Get geo location on load.
   useEffect(() => {
     axios.get('https://api.ipdata.co?api-key=4ccc16c61a91167bfa77f15dcd58e3348b29874c454764fc14843b2a')
       .then(res => {
@@ -26,7 +26,13 @@ function App() {
       .catch(err => {
         console.log("Error: ", err);
       })
-  }, [])
+
+    //Get locations from local storage on load.  
+    const item = window.localStorage.getItem('savedLocation');
+    if (item) {
+      setSavedLocations(JSON.parse(item));
+    }
+  }, []);
 
   // Get weather data based on location.
   useEffect(() => {
@@ -59,7 +65,10 @@ function App() {
     setSavedLocations([...savedLocations, location]);
   }
 
-  console.log("saved location:", savedLocations);
+  // Save locations to local storage if there are any saved.
+  if (savedLocations.length > 0) {
+    localStorage.setItem('savedLocation', JSON.stringify(savedLocations));
+  }
 
   return (
     <div className="App">
@@ -74,7 +83,7 @@ function App() {
         weatherDescription={weatherDescription}
         saveLocation={saveLocation}
       />
-      <SavedLocationList 
+      <SavedLocationList
         savedLocations={savedLocations}
       />
     </div>
