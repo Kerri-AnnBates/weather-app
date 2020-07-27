@@ -1,31 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import moment from "moment";
 
 const TimeBlock = () => {
-    const today = new Date();
-    let currenthour = today.getHours();
-    let mins = today.getMinutes();
 
-    // Format hours
-    if(currenthour < 10) { currenthour = `0${currenthour}`}
-    if(currenthour > 12) { currenthour = currenthour % 12 }
+	const [currentDate, setCurrentDate] = useState(moment().format("dddd, MMM D, YYYY"));
+	const [currentTime, setCurrentTime] = useState(moment().format("h:m A"));
+	// const [count, setCount] = useState(0);
 
-    //Format minutes
-    if(mins < 10) { mins = `0${mins}` }
+	// const updateTime = () => {
+	// 	setCurrentTime(moment().format("h:m A"));
 
-    const [time, setTime] = useState({
-        hour: currenthour,
-        minutes: mins
-    });
+	// }
 
-    console.log("Date", today);
-    return (
-        <div className="time-block">
-            <div className="container">
-                <div className="date">Tuesday Jan 3, 2020</div>
-                <div className="time">{`${time.hour}:${time.minutes}`} {today.getHours() < 12 ? 'AM' : 'PM'}</div>
-            </div>
-        </div>
-    )
+	// useEffect(() => {
+	// 	setInterval(updateTime(), 1000);
+
+	// }, [currentTime])
+
+	// console.log(count);
+
+	return (
+		<div className="time-block">
+			<div className="container">
+				<div className="date">{currentDate}</div>
+				<div className="time">{currentTime}</div>
+			</div>
+		</div>
+	)
 }
 
 export default TimeBlock;
