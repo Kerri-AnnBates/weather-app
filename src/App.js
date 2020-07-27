@@ -17,36 +17,36 @@ function App() {
 	const [savedLocations, setSavedLocations] = useState([]);
 
 	// Get geo location on load.
-	useEffect(() => {
-		axios.get(`https://api.ipdata.co?api-key=${process.env.REACT_APP_IPDATA_KEY}`)
-			.then(res => {
-				// console.log("Location: ", res.data);
-				setLocation({ ...location, city: res.data.city, state: res.data.region_code });
-			})
-			.catch(err => {
-				console.log("Error: ", err);
-			})
+	// useEffect(() => {
+	// 	axios.get(`https://api.ipdata.co?api-key=${process.env.REACT_APP_IPDATA_KEY}`)
+	// 		.then(res => {
+	// 			// console.log("Location: ", res.data);
+	// 			setLocation({ ...location, city: res.data.city, state: res.data.region_code });
+	// 		})
+	// 		.catch(err => {
+	// 			console.log("Error: ", err);
+	// 		})
 
-		//Get locations from local storage on load.  
-		const item = window.localStorage.getItem('savedLocation');
-		if (item) {
-			setSavedLocations(JSON.parse(item));
-		}
-	}, []);
+	// 	//Get locations from local storage on load.  
+	// 	const item = window.localStorage.getItem('savedLocation');
+	// 	if (item) {
+	// 		setSavedLocations(JSON.parse(item));
+	// 	}
+	// }, []);
 
-	// Get weather data based on location.
-	useEffect(() => {
-		axios.get(`https://api.weatherbit.io/v2.0/current?city=${location.city},${location.state}&key=${process.env.REACT_APP_WEATHER_KEY}`)
-			.then(res => {
-				console.log(res.data.data[0]);
-				setData(res.data.data[0]);
-				setweatherDescription(res.data.data[0].weather);
-			})
-			.catch(err => {
-				console.log("Error: ", err);
-				// alert('Sorry, no results from your search. Please ensure "City, ST" entry.');
-			})
-	}, [location, savedLocations]);
+	// // Get weather data based on location.
+	// useEffect(() => {
+	// 	axios.get(`https://api.weatherbit.io/v2.0/current?city=${location.city},${location.state}&key=${process.env.REACT_APP_WEATHER_KEY}`)
+	// 		.then(res => {
+	// 			console.log(res.data.data[0]);
+	// 			setData(res.data.data[0]);
+	// 			setweatherDescription(res.data.data[0].weather);
+	// 		})
+	// 		.catch(err => {
+	// 			console.log("Error: ", err);
+	// 			// alert('Sorry, no results from your search. Please ensure "City, ST" entry.');
+	// 		})
+	// }, [location, savedLocations]);
 
 	// Handle change to seach form.
 	const handleChange = (e) => {

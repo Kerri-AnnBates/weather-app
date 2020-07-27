@@ -2,28 +2,24 @@ import React, { useState, useEffect } from 'react';
 import moment from "moment";
 
 const TimeBlock = () => {
+	const [currentTimeAndDate, setCurrentTimeAndDate] = useState(moment());
 
-	const [currentDate, setCurrentDate] = useState(moment().format("dddd, MMM D, YYYY"));
-	const [currentTime, setCurrentTime] = useState(moment().format("h:m A"));
-	// const [count, setCount] = useState(0);
+	const updateTime = () => {
+		setCurrentTimeAndDate(moment());
+	}
 
-	// const updateTime = () => {
-	// 	setCurrentTime(moment().format("h:m A"));
-
-	// }
-
-	// useEffect(() => {
-	// 	setInterval(updateTime(), 1000);
-
-	// }, [currentTime])
-
-	// console.log(count);
+	useEffect(() => {
+		let timer = setInterval(() => updateTime(), 1000);
+		return () => {
+			clearTimeout(timer)
+		}
+	}, [currentTimeAndDate]);
 
 	return (
 		<div className="time-block">
 			<div className="container">
-				<div className="date">{currentDate}</div>
-				<div className="time">{currentTime}</div>
+				<div className="date">{currentTimeAndDate.format("dddd, MMM D, YYYY")}</div>
+				<div className="time">{currentTimeAndDate.format("h:m A")}</div>
 			</div>
 		</div>
 	)
