@@ -13,7 +13,7 @@ const TimeBlock = () => {
 		return () => {
 			clearTimeout(timer)
 		}
-	}, [currentTimeAndDate]);
+	}, []);
 
 	return (
 		<div className="time-block">
