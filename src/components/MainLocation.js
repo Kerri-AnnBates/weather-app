@@ -16,11 +16,6 @@ const MainLocation = () => {
 		sunset: ""
 	});
 
-	// Convert temp to fahrenheit
-	const tempInFahrenheit = () => {
-		return (weatherData.temp) ? (weatherData.temp * 9 / 5) + 32 : "Loading...";
-	}
-
 	// Get geo location
 	const getInitialLocation = () => {
 		return axios.get(`https://api.ipdata.co?api-key=${process.env.REACT_APP_IPDATA_KEY}`)
@@ -72,7 +67,7 @@ const MainLocation = () => {
 							<img src={cloudy} alt="cloudy weather" />
 						</div>
 						<div className="main-description">
-							{tempInFahrenheit() && <p className="title-md">{tempInFahrenheit()} &#xb0;F</p>}
+							<p>{(weatherData.temp) ? (weatherData.temp * 9 / 5) + 32 : "Loading..."} &#xb0;F</p>
 							<p className="title-sm">{weatherData.description}</p>
 						</div>
 					</div>
