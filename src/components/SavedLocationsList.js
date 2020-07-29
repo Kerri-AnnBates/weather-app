@@ -1,7 +1,7 @@
 import React from 'react';
 import SavedLocationCard from './SavedLocationCard';
 
-function SavedLocationList(props) {
+const SavedLocationsList = (props) => {
 	const { savedLocations } = props;
 	return (
 		<div className="saved-container" id="saved-location">
@@ -21,4 +21,4 @@ function SavedLocationList(props) {
 	)
 }
 
-export default SavedLocationList
+export default SavedLocationsList;
