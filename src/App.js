@@ -1,32 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header';
 import DateTime from './components/DateTime';
 import MainLocation from './components/MainLocation';
+import SavedLocationsList from "./components/SavedLocationsList";
 import WeatherContext from './context/WeatherContext';
 
 const App = () => {
-	// const [savedLocations, setSavedLocations] = useState([]);
+	const [savedLocations, setSavedLocations] = useState([]);
 	const [location, setLocation] = useState({
 		city: '',
 		state: ''
 	});
 
-	// // Save the location and add to collection of saved locations.
-	// const saveLocation = (location) => {
-	// 	setSavedLocations([...savedLocations, location]);
-	// }
+	// Populate saved locations if any
+	useEffect(() => {
+		const locations = JSON.parse(localStorage.getItem("savedLocations"));
 
-	// // Save locations to local storage if there are any saved.
-	// if (savedLocations.length > 0) {
-	// 	localStorage.setItem('savedLocation', JSON.stringify(savedLocations));
-	// }
+		if (locations) {
+			setSavedLocations(locations);
+		}
+	}, []);
+
+	useEffect(() => {
+		localStorage.setItem('savedLocations', JSON.stringify(savedLocations));
+	}, [savedLocations]);
 
 	return (
-		<WeatherContext.Provider value={{ location, setLocation }}>
+		<WeatherContext.Provider value={{ location, setLocation, savedLocations, setSavedLocations }}>
 			<Header />
 			<DateTime />
 			<MainLocation />
+			<SavedLocationsList />
 		</WeatherContext.Provider>
 	);
 }

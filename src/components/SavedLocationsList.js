@@ -1,14 +1,15 @@
-import React from 'react';
-import SavedLocationCard from './SavedLocationCard';
+import React, { useContext } from "react";
+import SavedLocationCard from "./SavedLocationCard";
+import WeatherContext from "../context/WeatherContext";
 
-const SavedLocationsList = (props) => {
-	const { savedLocations } = props;
+const SavedLocationsList = () => {
+	const { savedLocations } = useContext(WeatherContext);
+
 	return (
 		<div className="saved-container" id="saved-location">
 			<div className="container">
 				<h3>Saved Locations</h3>
 				<div className="saved-wrapper flex-container">
-					{/* Saved location cards */}
 					{(savedLocations.length > 0) && savedLocations.map((location, index) => (
 						<SavedLocationCard
 							key={index}

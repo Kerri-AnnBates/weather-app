@@ -1,14 +1,14 @@
 import React, { useEffect, useContext, useState } from "react";
 import axios from "axios";
 import moment from "moment";
-import WeatherContext from '../context/WeatherContext';
-import cloudy from '../images/weather.png';
+import WeatherContext from "../context/WeatherContext";
+import cloudy from "../images/weather.png";
 // import sunnyImg from '../images/sunlight.png';
 // import rainyImg from '../images/rain.png';
 // import snow from '../images/snow.png';
 
 const MainLocation = () => {
-	const { location, setLocation } = useContext(WeatherContext);
+	const { location, setLocation, savedLocations, setSavedLocations } = useContext(WeatherContext);
 	const [weatherData, setWeatherData] = useState({
 		temp: null,
 		description: "",
@@ -37,6 +37,7 @@ const MainLocation = () => {
 			.then(res => {
 				console.log(res.data.data[0]);
 				const data = res.data.data[0];
+
 				setWeatherData({
 					temp: data.temp,
 					description: data.weather.description,
@@ -74,12 +75,27 @@ const MainLocation = () => {
 		}
 	}, [location.city, location.state]);
 
+	const saveLocation = () => {
+		setSavedLocations([
+			...savedLocations,
+			{
+				city: location.city,
+				state: location.state,
+				temp: (weatherData.temp * 9 / 5) + 32,
+				description: weatherData.description
+			}
+		])
+	}
+
 	return (
 		<div className="main-card-container">
 			<div className="card">
 				<div className="header">
 					<h3>{location.city}, {location.state}</h3>
-					<button className="save">Save location</button>
+					<button
+						className="save"
+						onClick={saveLocation}
+					>Save location</button>
 				</div>
 				<div className="body">
 					<div className="temp flex-container">
