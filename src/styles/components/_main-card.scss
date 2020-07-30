@@ -1,0 +1,43 @@
+/* Cards */
+
+.card {
+	border            : 1px solid #ccc;
+	-webkit-box-shadow: 2px 2px 7px 0px rgba(0, 0, 0, 0.36);
+	-moz-box-shadow   : 2px 2px 7px 0px rgba(0, 0, 0, 0.36);
+	box-shadow        : 2px 2px 7px 0px rgba(0, 0, 0, 0.36);
+	background        : #fcfcfc;
+}
+
+.card .header {
+	background     : #16405B;
+	padding        : 1rem;
+	color          : #E8E8E8;
+	display        : flex;
+	align-items    : flex-end;
+	justify-content: space-between;
+}
+
+.card .body {
+	padding: 1rem;
+}
+
+.main-card-container {
+	padding: 2rem 0;
+}
+
+.main-card-container .card {
+	max-width: 500px;
+	width    : 100%;
+	margin   : auto;
+}
+
+.temp .img-container {
+	width: 30%;
+}
+
+button.save {
+	border       : 2px solid #E8E8E8;
+	background   : #E8E8E8;
+	border-radius: 5px;
+	padding      : 5px 10px;
+}
