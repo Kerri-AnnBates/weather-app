@@ -54,6 +54,26 @@ const MainLocation = () => {
 		getWeather();
 	}, []);
 
+	useEffect(() => {
+
+		if (location.city !== "" && location.state !== "") {
+			axios.get(`https://api.weatherbit.io/v2.0/current?city=${location.city},${location.state}&key=${process.env.REACT_APP_WEATHER_KEY}`)
+				.then(res => {
+					console.log(res.data.data[0]);
+					const data = res.data.data[0];
+					setWeatherData({
+						temp: data.temp,
+						description: data.weather.description,
+						sunrise: data.sunrise,
+						sunset: data.sunset
+					})
+				})
+				.catch(err => {
+					console.log("Error: ", err);
+				})
+		}
+	}, [location.city, location.state]);
+
 	return (
 		<div className="main-card-container">
 			<div className="card">

@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react';
 import WeatherContext from '../context/WeatherContext';
 
 const SearchForm = () => {
-	const [userInput, setUserInput] = useState('');
 	const { location, setLocation } = useContext(WeatherContext);
+	const [userInput, setUserInput] = useState('');
 
 	// Handle change to seach form.
 	const handleChange = (e) => {
