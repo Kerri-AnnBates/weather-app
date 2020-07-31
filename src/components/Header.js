@@ -6,10 +6,10 @@ const Header = () => {
 	return (
 		<header className="header">
 			<div className="container">
-				<div className="flex-container header__wrapper">
+				<div className="header__wrapper">
 					<div className="header__logo"><img src={logo} alt="weather app" /></div>
-					<nav>
-						<ul className="flex-container">
+					<nav className="header__nav">
+						<ul>
 							{/* <li><a href="#">Your Location</a></li> */}
 							{/* <li><a href="#saved-locations">Saved Location</a></li> */}
 						</ul>

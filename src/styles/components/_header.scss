@@ -1,34 +1,20 @@
 /* Header */
 
 .header {
-	background: #E8E8E8;
+	background: $off-white;
 	padding   : 1rem 0;
 }
 
-.header a {
-	color: #16405B;
+.header__link {
+	color: $dark-blue;
 }
 
 .header__logo {
 	max-width: 100px;
 }
 
-header .flex-container {
-	align-items: center;
-}
-
 .header__wrapper {
+	display        : flex;
 	justify-content: space-between;
-}
-
-nav .flex-container {
-	justify-content: space-evenly;
-}
-
-nav {
-	width: 50%;
-}
-
-button:hover {
-	cursor: pointer;
+	align-items    : center;
 }
