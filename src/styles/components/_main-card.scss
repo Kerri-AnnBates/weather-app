@@ -1,6 +1,8 @@
 /* Cards */
-
-.card {
+.main-card {
+	max-width         : 500px;
+	width             : 100%;
+	margin            : 2rem auto;
 	border            : 1px solid #ccc;
 	-webkit-box-shadow: 2px 2px 7px 0px rgba(0, 0, 0, 0.36);
 	-moz-box-shadow   : 2px 2px 7px 0px rgba(0, 0, 0, 0.36);
@@ -8,7 +10,7 @@
 	background        : #fcfcfc;
 }
 
-.card .header {
+.main-card__header {
 	background     : #16405B;
 	padding        : 1rem;
 	color          : #E8E8E8;
@@ -17,27 +19,32 @@
 	justify-content: space-between;
 }
 
-.card .body {
+.main-card__body {
 	padding: 1rem;
 }
 
-.main-card-container {
-	padding: 2rem 0;
+.main-card__description {
+	display        : flex;
+	justify-content: space-between;
+	align-items    : center;
 }
 
-.main-card-container .card {
-	max-width: 500px;
-	width    : 100%;
-	margin   : auto;
-}
-
-.temp .img-container {
+.main-card__img-container {
 	width: 30%;
 }
 
-button.save {
-	border       : 2px solid #E8E8E8;
-	background   : #E8E8E8;
-	border-radius: 5px;
-	padding      : 5px 10px;
+.main-card__temp {
+	color: $brownish;
+}
+
+.main-card__temp--title {
+	font-size  : $font-size-lg;
+	font-weight: 700;
+	opacity    : 0.9;
+}
+
+.main-card__temp--subtitle {
+	font-size  : $font-size-md;
+	font-weight: 300;
+	text-align : center;
 }

@@ -1,3 +1,10 @@
-button:hover {
+.button:hover {
 	cursor: pointer;
+}
+
+.button {
+	border       : 2px solid #E8E8E8;
+	background   : #E8E8E8;
+	border-radius: 5px;
+	padding      : 5px 10px;
 }

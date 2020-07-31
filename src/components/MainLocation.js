@@ -88,30 +88,30 @@ const MainLocation = () => {
 	}
 
 	return (
-		<div className="main-card-container">
-			<div className="card">
-				<div className="header">
-					<h3>{location.city}, {location.state}</h3>
-					<button
-						className="save"
-						onClick={saveLocation}
-					>Save location</button>
-				</div>
-				<div className="body">
-					<div className="temp flex-container">
-						<div className="img-container">
-							<img src={cloudy} alt="cloudy weather" />
-						</div>
-						<div className="main-description">
-							<p>{(weatherData.temp) ? (weatherData.temp * 9 / 5) + 32 : "Loading..."} &#xb0;F</p>
-							<p className="title-sm">{weatherData.description}</p>
-						</div>
+		<div className="main-card">
+			<div className="main-card__header">
+				<h3>{location.city}, {location.state}</h3>
+				<button
+					className="button"
+					onClick={saveLocation}
+				>Save location</button>
+			</div>
+			<div className="main-card__body">
+				<div className="main-card__description">
+					<div className="main-card__img-container">
+						<img src={cloudy} alt="cloudy weather" />
 					</div>
-					<div className="misc-description">
-						<p>Sunrise: {moment(weatherData.sunrise, "HH:mm").format("h:mm A")}</p>
-						<p>Sunset: {moment(weatherData.sunset, "HH:mm").format("h:mm A")}</p>
+					<div className="main-card__temp">
+						<p className="main-card__temp--title">{(weatherData.temp) ? (weatherData.temp * 9 / 5) + 32 : "Loading..."}&#xb0; F</p>
+						<p className="main-card__temp--subtitle">{weatherData.description}</p>
 					</div>
 				</div>
+				{
+					//<div className="main-card__misc">
+					//<p>Sunrise: {moment(weatherData.sunrise, "HH:mm").format("h:mm A")}</p>
+					// <p>Sunset: {moment(weatherData.sunset, "HH:mm").format("h:mm A")}</p>
+					// </div>
+				}
 			</div>
 		</div>
 	)
