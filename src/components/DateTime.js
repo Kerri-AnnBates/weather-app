@@ -16,10 +16,10 @@ const DateTime = () => {
 	}, []);
 
 	return (
-		<div className="time-block">
+		<div className="date-time">
 			<div className="container">
-				<div className="date">{currentTimeAndDate.format("dddd, MMM D, YYYY")}</div>
-				<div className="time">{currentTimeAndDate.format("h:mm A")}</div>
+				<div className="date-time__date">{currentTimeAndDate.format("dddd MMM D, YYYY")}</div>
+				<div className="date-time__time">{currentTimeAndDate.format("h:mm A")}</div>
 			</div>
 		</div>
 	)
