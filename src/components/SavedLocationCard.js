@@ -5,13 +5,14 @@ const SavedLocationCard = (props) => {
 
 	return (
 		<div className="saved-card">
-			<header><h3>{location.city}</h3></header>
-			<div className="body">
-				<div className="temp flex-container">
-					<div className="main-description">
-						<p className="title-md">{location.temp} &#xb0;F</p>
-						<p className="title-sm">{location.description}</p>
-					</div>
+			<span className="close">X</span>
+			<div className="saved-card__body">
+				<div className="saved-card__temp">
+					<p className="saved-card__title">{location.temp} &#xb0;F</p>
+				</div>
+				<div className="saved-card__details">
+					<p>{location.city}, {location.state}</p>
+					<p className="saved-card__description">{location.description}</p>
 				</div>
 			</div>
 		</div>

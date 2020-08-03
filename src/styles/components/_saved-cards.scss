@@ -1,22 +1,43 @@
-.saved-container {
-	padding: 2rem 0;
+.saved-wrapper {
+	display  : flex;
+	flex-wrap: wrap;
 }
 
 .saved-card {
-	width : 30%;
-	margin: 2rem;
+	width   : 20%;
+	margin  : 2rem;
+	border  : 1px solid;
+	position: relative;
+
+	.close {
+		position: absolute;
+		right   : 1rem;
+		top     : 1rem;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
 }
 
-.saved-card .body,
-.saved-card header {
-	padding: 1rem;
+.saved-card__body {
+	text-align: center;
+	padding   : 2rem;
 }
 
-.saved-card header {
-	background: #16405B;
-	color     : #E8E8E8;
+.saved-card__temp {
+	background-color: $brownish;
+	color           : #fff;
+	font-size       : $font-size-sm;
+	width           : 100px;
+	height          : 100px;
+	margin          : auto;
+	border-radius   : 50%;
+	display         : flex;
+	justify-content : center;
+	align-items     : center;
 }
 
-.saved-wrapper {
-	padding: 2rem 0;
+.saved-card__details {
+	margin-top: 1rem;
 }
