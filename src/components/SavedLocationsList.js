@@ -3,7 +3,15 @@ import SavedLocationCard from "./SavedLocationCard";
 import WeatherContext from "../context/WeatherContext";
 
 const SavedLocationsList = () => {
-	const { savedLocations } = useContext(WeatherContext);
+	const { savedLocations, setSavedLocations } = useContext(WeatherContext);
+
+	const onRemove = (city) => {
+		const locations = savedLocations.filter((location) => {
+			return city.toLowerCase() !== location.city.toLowerCase();
+		});
+
+		setSavedLocations(locations);
+	}
 
 	return (
 		<div className="saved-container" id="saved-location">
@@ -14,6 +22,7 @@ const SavedLocationsList = () => {
 						<SavedLocationCard
 							key={index}
 							location={location}
+							onRemove={onRemove}
 						/>
 					))}
 				</div>
