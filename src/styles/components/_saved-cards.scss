@@ -4,10 +4,10 @@
 }
 
 .saved-card {
-	width   : 20%;
-	margin  : 2rem;
-	border  : 1px solid;
-	position: relative;
+	width     : 20%;
+	margin    : 2rem;
+	position  : relative;
+	transition: all ease-in .3s;
 
 	.close {
 		position: absolute;
@@ -17,6 +17,11 @@
 		&:hover {
 			cursor: pointer;
 		}
+	}
+
+	&:hover {
+		border          : 1px solid;
+		background-color: lighten($dark-blue, $amount: 70%);
 	}
 }
 
