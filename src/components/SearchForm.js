@@ -27,6 +27,7 @@ const SearchForm = () => {
 						name="search"
 						value={userInput}
 						onChange={(e) => handleChange(e)} /></label>
+				<button className="button">Search</button>
 			</form>
 		</div>
 	)
