@@ -33,21 +33,26 @@ const MainLocation = () => {
 	const getWeather = async () => {
 		const result = await getInitialLocation();
 
-		axios.get(`https://api.weatherbit.io/v2.0/current?city=${result.city},${result.region_code}&key=${process.env.REACT_APP_WEATHER_KEY}`)
-			.then(res => {
-				console.log(res.data.data[0]);
-				const data = res.data.data[0];
+		if (result) {
+			axios.get(`https://api.weatherbit.io/v2.0/current?city=${result.city},${result.region_code}&key=${process.env.REACT_APP_WEATHER_KEY}`)
+				.then(res => {
+					console.log(res.data.data[0]);
+					const data = res.data.data[0];
 
-				setWeatherData({
-					temp: data.temp,
-					description: data.weather.description,
-					sunrise: data.sunrise,
-					sunset: data.sunset
+					setWeatherData({
+						temp: data.temp,
+						description: data.weather.description,
+						sunrise: data.sunrise,
+						sunset: data.sunset
+					})
 				})
-			})
-			.catch(err => {
-				console.log("Error: ", err);
-			})
+				.catch(err => {
+					console.log("Error: ", err);
+				})
+		} else {
+			console.log("Unable to get location")
+		}
+
 	}
 
 	// Get geo location on load.
@@ -81,7 +86,7 @@ const MainLocation = () => {
 			{
 				city: location.city,
 				state: location.state,
-				temp: (weatherData.temp * 9 / 5) + 32,
+				temp: weatherData.temp,
 				description: weatherData.description
 			}
 		])

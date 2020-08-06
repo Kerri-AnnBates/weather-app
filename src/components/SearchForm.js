@@ -13,8 +13,11 @@ const SearchForm = () => {
 	// Handle submit of search form
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		setLocation({ ...location, city: userInput.split(', ')[0], state: userInput.split(', ')[1] });
-		setUserInput('');
+		if (userInput !== "") {
+			setLocation({ ...location, city: userInput.split(', ')[0], state: userInput.split(', ')[1] });
+			setUserInput('');
+		}
+
 	}
 
 	return (
