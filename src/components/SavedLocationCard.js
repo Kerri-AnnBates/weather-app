@@ -29,7 +29,7 @@ const SavedLocationCard = (props) => {
 			<span className="close" onClick={() => onRemove(location.city)}>X</span>
 			<div className="saved-card__body">
 				<div className="saved-card__temp">
-					<p className="saved-card__title">{(currentWeahterData.temp) ? (currentWeahterData.temp * 9 / 5) + 32 : "Loading..."} &#xb0;F</p>
+					<p className="saved-card__title">{(currentWeahterData.temp) ? Math.ceil((currentWeahterData.temp * 9 / 5) + 32) : "Loading..."} &#xb0;F</p>
 				</div>
 				<div className="saved-card__details">
 					<p>{location.city}, {location.state}</p>

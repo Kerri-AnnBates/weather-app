@@ -107,7 +107,7 @@ const MainLocation = () => {
 						<img src={cloudy} alt="cloudy weather" />
 					</div>
 					<div className="main-card__temp">
-						<p className="main-card__temp--title">{(weatherData.temp) ? (weatherData.temp * 9 / 5) + 32 : "Loading..."}&#xb0; F</p>
+						<p className="main-card__temp--title">{(weatherData.temp) ? Math.ceil((weatherData.temp * 9 / 5) + 32) : "Loading..."}&#xb0; F</p>
 						<p className="main-card__temp--subtitle">{weatherData.description}</p>
 					</div>
 				</div>
