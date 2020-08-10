@@ -78,18 +78,26 @@ const MainLocation = () => {
 					console.log("Error: ", err);
 				})
 		}
+
 	}, [location.city, location.state]);
 
 	const saveLocation = () => {
-		setSavedLocations([
-			...savedLocations,
-			{
-				city: location.city,
-				state: location.state,
-				temp: weatherData.temp,
-				description: weatherData.description
-			}
-		])
+		const found = savedLocations.find(loc => loc.city === location.city.toLowerCase());
+
+		if (found) {
+			console.log("That location is already saved!");
+		} else {
+			setSavedLocations([
+				...savedLocations,
+				{
+					city: location.city.toLowerCase(),
+					state: location.state.toLowerCase(),
+					temp: weatherData.temp,
+					description: weatherData.description
+				}
+			])
+		}
+
 	}
 
 	return (

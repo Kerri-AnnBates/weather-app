@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import WeatherContext from "../context/WeatherContext";
 
 const SavedLocationCard = (props) => {
+	const { savedLocations, setSavedLocations } = useContext(WeatherContext);
 	const { location, onRemove } = props;
 	const [currentWeahterData, setCurrentWeatherData] = useState({
 		temp: location.temp,
