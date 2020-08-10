@@ -14,7 +14,7 @@ const SavedLocationsList = () => {
 	}
 
 	return (
-		<div className="saved-container" id="saved-location">
+		<section className="saved-container" id="saved-location">
 			<div className="container">
 				<h3>Saved Locations</h3>
 				<div className="saved-wrapper flex-container">
@@ -27,7 +27,7 @@ const SavedLocationsList = () => {
 					))}
 				</div>
 			</div>
-		</div>
+		</section>
 	)
 }
 

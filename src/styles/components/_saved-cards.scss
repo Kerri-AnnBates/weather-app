@@ -21,7 +21,7 @@
 
 	&:hover {
 		border          : 1px solid;
-		background-color: lighten($dark-blue, $amount: 70%);
+		background-color: lighten($main-color, $amount: 70%);
 	}
 }
 

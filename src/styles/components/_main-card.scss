@@ -2,21 +2,22 @@
 .main-card {
 	max-width         : 500px;
 	width             : 100%;
-	margin            : 2rem auto;
+	margin            : auto;
 	border            : 1px solid #ccc;
 	-webkit-box-shadow: 2px 2px 7px 0px rgba(0, 0, 0, 0.36);
 	-moz-box-shadow   : 2px 2px 7px 0px rgba(0, 0, 0, 0.36);
 	box-shadow        : 2px 2px 7px 0px rgba(0, 0, 0, 0.36);
 	background        : #fcfcfc;
+	z-index           : 1;
 }
 
 .main-card__header {
-	background     : #16405B;
-	padding        : 1rem;
-	color          : #E8E8E8;
-	display        : flex;
-	align-items    : flex-end;
-	justify-content: space-between;
+	background-color: $main-color;
+	padding         : 1rem;
+	color           : #E8E8E8;
+	display         : flex;
+	align-items     : flex-end;
+	justify-content : space-between;
 }
 
 .main-card__body {

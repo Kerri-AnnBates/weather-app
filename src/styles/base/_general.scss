@@ -53,3 +53,33 @@ li {
 a {
 	text-decoration: none;
 }
+
+// Main Section
+.main-section {
+	height  : calc(100vh - 160px);
+	width   : 100%;
+	position: relative;
+}
+
+.main-section__center {
+	display        : flex;
+	justify-content: center;
+	align-items    : center;
+	height         : 100%;
+}
+
+
+.curve svg {
+	display : block;
+	position: absolute;
+	bottom  : 0;
+}
+
+.curve path {
+	fill: $off-peach;
+}
+
+// Saved Locations Section
+#saved-location {
+	background-color: $off-peach;
+}

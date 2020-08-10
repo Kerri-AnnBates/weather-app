@@ -54,7 +54,7 @@ const SavedLocationCard = (props) => {
 					<p>{location.city}, {location.state}</p>
 					<p className="saved-card__description">{location.description}</p>
 				</div>
-				<button onClick={updateWeather}>Update</button>
+				<button className="button" onClick={updateWeather}>Update</button>
 			</div>
 		</div>
 	)
