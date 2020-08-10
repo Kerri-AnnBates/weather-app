@@ -6,8 +6,8 @@ const SavedLocationCard = (props) => {
 	const { savedLocations, setSavedLocations } = useContext(WeatherContext);
 	const { location, onRemove } = props;
 	const [currentWeahterData, setCurrentWeatherData] = useState({
-		temp: location.temp,
-		description: location.description
+		temp: null,
+		description: ""
 	});
 
 	const updateWeather = () => {
@@ -26,16 +26,33 @@ const SavedLocationCard = (props) => {
 		}
 	}
 
+	useEffect(() => {
+
+		if (currentWeahterData.temp !== null && currentWeahterData.description !== "") {
+			const updatedLocation = {
+				...location,
+				temp: currentWeahterData.temp,
+				description: currentWeahterData.description
+			}
+			const newArr = [...savedLocations];
+			const index = savedLocations.indexOf(location);
+
+			newArr[index] = updatedLocation;
+			setSavedLocations(newArr);
+		}
+
+	}, [currentWeahterData])
+
 	return (
 		<div className="saved-card">
 			<span className="close" onClick={() => onRemove(location.city)}>X</span>
 			<div className="saved-card__body">
 				<div className="saved-card__temp">
-					<p className="saved-card__title">{(currentWeahterData.temp) ? Math.ceil((currentWeahterData.temp * 9 / 5) + 32) : "Loading..."} &#xb0;F</p>
+					<p className="saved-card__title">{(location.temp) ? Math.ceil((location.temp * 9 / 5) + 32) : "Loading..."} &#xb0;F</p>
 				</div>
 				<div className="saved-card__details">
 					<p>{location.city}, {location.state}</p>
-					<p className="saved-card__description">{currentWeahterData.description}</p>
+					<p className="saved-card__description">{location.description}</p>
 				</div>
 				<button onClick={updateWeather}>Update</button>
 			</div>
