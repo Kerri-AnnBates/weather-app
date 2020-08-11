@@ -102,10 +102,10 @@ const MainLocation = () => {
 
 	return (
 		<section className="main-section curve">
-			<div className="main-section__center">
+			<div className="main-section__center container">
 				<div className="main-card">
 					<div className="main-card__header">
-						<h3>{location.city}, {location.state}</h3>
+						<h3><span className="title-city">{location.city}</span>, <span className="title-state">{location.state}</span></h3>
 						<button
 							className="button"
 							onClick={saveLocation}

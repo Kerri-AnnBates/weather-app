@@ -1,20 +1,25 @@
 .saved-wrapper {
-	display  : flex;
+	display: flex;
 	flex-wrap: wrap;
+	flex-direction: column;
+
+	@media (min-width: 700px) {
+		flex-direction: row;
+	}
 }
 
 .saved-card {
-	width        : 20%;
-	margin       : 2rem;
-	position     : relative;
+	width: 100%;
+	margin: 2rem auto;
+	position: relative;
 	border-radius: 10px;
-	background   : #fff;
-	transition   : all ease-in .3s;
+	background: #fff;
+	transition: all ease-in 0.3s;
 
 	.close {
 		position: absolute;
-		right   : 1rem;
-		top     : 1rem;
+		right: 1rem;
+		top: 1rem;
 
 		&:hover {
 			cursor: pointer;
@@ -24,24 +29,28 @@
 	&:hover {
 		background-color: lighten($main-color, $amount: 70%);
 	}
+
+	@media (min-width: 700px) {
+		width: 30%;
+	}
 }
 
 .saved-card__body {
 	text-align: center;
-	padding   : 2rem;
+	padding: 2rem;
 }
 
 .saved-card__temp {
 	background-color: $brownish;
-	color           : #fff;
-	font-size       : $font-size-sm;
-	width           : 100px;
-	height          : 100px;
-	margin          : auto;
-	border-radius   : 50%;
-	display         : flex;
-	justify-content : center;
-	align-items     : center;
+	color: #fff;
+	font-size: $font-size-sm;
+	width: 100px;
+	height: 100px;
+	margin: auto;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .saved-card__details {

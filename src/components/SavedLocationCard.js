@@ -51,7 +51,7 @@ const SavedLocationCard = (props) => {
 					<p className="saved-card__title">{(location.temp) ? Math.ceil((location.temp * 9 / 5) + 32) : "Loading..."} &#xb0;F</p>
 				</div>
 				<div className="saved-card__details">
-					<p>{location.city}, {location.state}</p>
+					<p><span className="title-city">{location.city}</span>, <span className="title-state">{location.state}</span></p>
 					<p className="saved-card__description">{location.description}</p>
 				</div>
 				<button className="button" onClick={updateWeather}>Update</button>
