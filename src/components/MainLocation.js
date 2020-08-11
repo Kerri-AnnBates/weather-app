@@ -103,7 +103,7 @@ const MainLocation = () => {
 	return (
 		<section className="main-section curve">
 			<div className="main-section__center container">
-				<div className="main-card">
+				<div className="main-card shadow">
 					<div className="main-card__header">
 						<h3><span className="title-city">{location.city}</span>, <span className="title-state">{location.state}</span></h3>
 						<button

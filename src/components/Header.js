@@ -9,10 +9,6 @@ const Header = () => {
 				<div className="header__wrapper">
 					<div className="header__logo"><img src={logo} alt="weather app" /></div>
 					<nav className="header__nav">
-						<ul>
-							{/* <li><a href="#">Your Location</a></li> */}
-							{/* <li><a href="#saved-locations">Saved Location</a></li> */}
-						</ul>
 						<SearchForm />
 					</nav>
 				</div>

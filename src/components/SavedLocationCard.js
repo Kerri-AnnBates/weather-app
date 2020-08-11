@@ -44,7 +44,7 @@ const SavedLocationCard = (props) => {
 	}, [currentWeahterData])
 
 	return (
-		<div className="saved-card">
+		<div className="saved-card shadow">
 			<span className="close" onClick={() => onRemove(location.city)}>X</span>
 			<div className="saved-card__body">
 				<div className="saved-card__temp">

@@ -23,13 +23,13 @@ const SearchForm = () => {
 	return (
 		<div className="search-form">
 			<form onSubmit={handleSubmit}>
-				<label htmlFor="search"> Search location:
-                <input
-						type="text"
-						placeholder="City, St"
-						name="search"
-						value={userInput}
-						onChange={(e) => handleChange(e)} /></label>
+				<label htmlFor="search"> Search location:</label>
+				<input
+					type="text"
+					placeholder="City, St"
+					name="search"
+					value={userInput}
+					onChange={(e) => handleChange(e)} />
 				<button className="button">Search</button>
 			</form>
 		</div>
