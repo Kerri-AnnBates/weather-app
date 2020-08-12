@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import axios from "axios";
-import moment from "moment";
+// import moment from "moment";
 import WeatherContext from "../context/WeatherContext";
 import cloudy from "../images/weather.png";
 // import sunnyImg from '../images/sunlight.png';
@@ -20,7 +20,6 @@ const MainLocation = () => {
 	const getInitialLocation = () => {
 		return axios.get(`https://api.ipdata.co?api-key=${process.env.REACT_APP_IPDATA_KEY}`)
 			.then(res => {
-				console.log(res.data);
 				setLocation({ city: res.data.city, state: res.data.region_code });
 				return res.data;
 			})
@@ -36,7 +35,6 @@ const MainLocation = () => {
 		if (result) {
 			axios.get(`https://api.weatherbit.io/v2.0/current?city=${result.city},${result.region_code}&key=${process.env.REACT_APP_WEATHER_KEY}`)
 				.then(res => {
-					console.log(res.data.data[0]);
 					const data = res.data.data[0];
 
 					setWeatherData({
@@ -65,7 +63,6 @@ const MainLocation = () => {
 		if (location.city !== "" && location.state !== "") {
 			axios.get(`https://api.weatherbit.io/v2.0/current?city=${location.city},${location.state}&key=${process.env.REACT_APP_WEATHER_KEY}`)
 				.then(res => {
-					console.log(res.data.data[0]);
 					const data = res.data.data[0];
 					setWeatherData({
 						temp: data.temp,
@@ -76,6 +73,18 @@ const MainLocation = () => {
 				})
 				.catch(err => {
 					console.log("Error: ", err);
+					console.log("Invalid submission");
+					setLocation({
+						city: "Location not found",
+						state: ""
+					});
+
+					setWeatherData({
+						temp: "Error",
+						description: "Error",
+						sunrise: "Error",
+						sunset: "Error"
+					})
 				})
 		}
 
@@ -85,7 +94,8 @@ const MainLocation = () => {
 		const found = savedLocations.find(loc => loc.city === location.city.toLowerCase());
 
 		if (found) {
-			console.log("That location is already saved!");
+			// console.log("That location is already saved!");
+			alert("That location is already saved!");
 		} else {
 			setSavedLocations([
 				...savedLocations,
