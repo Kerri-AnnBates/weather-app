@@ -18,6 +18,7 @@ const SavedLocationsList = () => {
 			<div className="container">
 				<h3>Saved Locations</h3>
 				<div className="saved-wrapper flex-container">
+					{(savedLocations.length === 0) && <p>You have no saved locations</p>}
 					{(savedLocations.length > 0) && savedLocations.map((location, index) => (
 						<SavedLocationCard
 							key={index}
