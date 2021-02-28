@@ -13,6 +13,11 @@ const App = () => {
 		state: ''
 	});
 
+	const [weatherData, setWeatherData] = useState({
+		temp: null,
+		description: ""
+	});
+
 	// Populate saved locations if any
 	useEffect(() => {
 		const locations = JSON.parse(localStorage.getItem("savedLocations"));
@@ -27,7 +32,7 @@ const App = () => {
 	}, [savedLocations]);
 
 	return (
-		<WeatherContext.Provider value={{ location, setLocation, savedLocations, setSavedLocations }}>
+		<WeatherContext.Provider value={{ location, setLocation, savedLocations, setSavedLocations, weatherData, setWeatherData }}>
 			<Header />
 			<DateTime />
 			<MainLocation />
