@@ -8,9 +8,7 @@ const MainLocation = () => {
 	const { location, setLocation, savedLocations, setSavedLocations } = useContext(WeatherContext);
 	const [weatherData, setWeatherData] = useState({
 		temp: null,
-		description: "",
-		sunrise: "",
-		sunset: ""
+		description: ""
 	});
 
 	// Get weather
@@ -32,12 +30,27 @@ const MainLocation = () => {
 	useEffect(() => {
 		// getWeather();
 		getInitialLocation()
-			.then(res => {
-				console.log(res);
-				getWeahter(res.city)
+			.then(data => {
+				console.log(data);
+				setLocation({
+					city: data.city,
+					state: data.region
+				});
+				getWeahter(data.city)
 					.then(weather => {
-						console.log(weather);
+						console.log(weather.data.current);
+						const data = weather.data.current;
+						setWeatherData({
+							temp: data.temperature,
+							description: data.weather_descriptions[0]
+						})
 					})
+					.catch(err => {
+						console.log(err);
+					})
+			})
+			.catch(err => {
+				console.log(err);
 			})
 	}, []);
 
