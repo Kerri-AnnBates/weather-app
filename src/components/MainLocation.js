@@ -1,44 +1,25 @@
-import React, { useEffect, useContext, useState } from "react";
-import axios from "axios";
+import React, { useEffect, useContext } from "react";
 import WeatherContext from "../context/WeatherContext";
 import cloudy from "../images/weather.png";
 import { getInitialLocation, getWeahter } from "../api/api";
 
 const MainLocation = () => {
-	const { location, setLocation, savedLocations, setSavedLocations } = useContext(WeatherContext);
-	const [weatherData, setWeatherData] = useState({
-		temp: null,
-		description: ""
-	});
+	const { location, setLocation, savedLocations, setSavedLocations, weatherData, setWeatherData } = useContext(WeatherContext);
 
-	// Get weather
-	// const getWeather = async () => {
-	// 	const result = await getInitialLocation();
-
-	// 	if (result) {
-	// 		getWeahter(result.city)
-	// 			.then(res => {
-	// 				console.log(res);
-	// 			})
-	// 	} else {
-	// 		console.log("Unable to get location")
-	// 	}
-
-	// }
-
-	// Get geo location on load.
 	useEffect(() => {
-		// getWeather();
+		// Get geo location on load.
 		getInitialLocation()
 			.then(data => {
-				console.log(data);
+				// console.log(data);
 				setLocation({
 					city: data.city,
 					state: data.region
 				});
+
+				// Get weather after location received.
 				getWeahter(data.city)
 					.then(weather => {
-						console.log(weather.data.current);
+						// console.log(weather.data.current);
 						const data = weather.data.current;
 						setWeatherData({
 							temp: data.temperature,
@@ -53,40 +34,6 @@ const MainLocation = () => {
 				console.log(err);
 			})
 	}, []);
-
-	// useEffect(() => {
-
-	// 	if (location.city !== "" && location.state !== "") {
-	// 		const url = `http://api.weatherstack.com/current?access_key=${process.env.REACT_APP_WEATHER_KEY}&query=New%20York`;
-
-	// 		axios.get(url)
-	// 			.then(res => {
-	// 				const data = res.data.data[0];
-	// 				setWeatherData({
-	// 					temp: data.temp,
-	// 					description: data.weather.description,
-	// 					sunrise: data.sunrise,
-	// 					sunset: data.sunset
-	// 				})
-	// 			})
-	// 			.catch(err => {
-	// 				console.log("Error: ", err);
-	// 				console.log("Invalid submission");
-	// 				setLocation({
-	// 					city: "Location not found",
-	// 					state: ""
-	// 				});
-
-	// 				setWeatherData({
-	// 					temp: "Error",
-	// 					description: "Error",
-	// 					sunrise: "Error",
-	// 					sunset: "Error"
-	// 				})
-	// 			})
-	// 	}
-
-	// }, [location.city, location.state]);
 
 	const saveLocation = () => {
 		const found = savedLocations.find(loc => loc.city === location.city.toLowerCase());
@@ -129,12 +76,6 @@ const MainLocation = () => {
 								<p className="main-card__temp--subtitle">{weatherData.description}</p>
 							</div>
 						</div>
-						{
-							//<div className="main-card__misc">
-							//<p>Sunrise: {moment(weatherData.sunrise, "HH:mm").format("h:mm A")}</p>
-							// <p>Sunset: {moment(weatherData.sunset, "HH:mm").format("h:mm A")}</p>
-							// </div>
-						}
 					</div>
 				</div>
 			</div>
