@@ -1,11 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import axios from "axios";
-// import moment from "moment";
 import WeatherContext from "../context/WeatherContext";
 import cloudy from "../images/weather.png";
-// import sunnyImg from '../images/sunlight.png';
-// import rainyImg from '../images/rain.png';
-// import snow from '../images/snow.png';
 
 const MainLocation = () => {
 	const { location, setLocation, savedLocations, setSavedLocations } = useContext(WeatherContext);
@@ -18,8 +14,9 @@ const MainLocation = () => {
 
 	// Get geo location
 	const getInitialLocation = () => {
-		return axios.get(`https://api.ipdata.co?api-key=${process.env.REACT_APP_IPDATA_KEY}`)
+		return axios.get(`https://geo.ipify.org/api/v1?apiKey=${process.env.REACT_APP_IPDATA_KEY}&ipAddress=174.250.20.7`)
 			.then(res => {
+				console.log(res);
 				setLocation({ city: res.data.city, state: res.data.region_code });
 				return res.data;
 			})
@@ -33,16 +30,18 @@ const MainLocation = () => {
 		const result = await getInitialLocation();
 
 		if (result) {
-			axios.get(`https://api.weatherbit.io/v2.0/current?city=${result.city},${result.region_code}&key=${process.env.REACT_APP_WEATHER_KEY}`)
+			const url = `http://api.weatherstack.com/current?access_key=${process.env.REACT_APP_WEATHER_KEY}&query=New%20York`;
+			// const old = `https://api.weatherbit.io/v2.0/current?city=${result.city},${result.region_code}&key=${process.env.REACT_APP_WEATHER_KEY}`;
+			axios.get(url)
 				.then(res => {
-					const data = res.data.data[0];
+					// const data = res.data.data[0];
 
-					setWeatherData({
-						temp: data.temp,
-						description: data.weather.description,
-						sunrise: data.sunrise,
-						sunset: data.sunset
-					})
+					// setWeatherData({
+					// 	temp: data.temp,
+					// 	description: data.weather.description,
+					// 	sunrise: data.sunrise,
+					// 	sunset: data.sunset
+					// })
 				})
 				.catch(err => {
 					console.log("Error: ", err);
@@ -58,37 +57,39 @@ const MainLocation = () => {
 		getWeather();
 	}, []);
 
-	useEffect(() => {
+	// useEffect(() => {
 
-		if (location.city !== "" && location.state !== "") {
-			axios.get(`https://api.weatherbit.io/v2.0/current?city=${location.city},${location.state}&key=${process.env.REACT_APP_WEATHER_KEY}`)
-				.then(res => {
-					const data = res.data.data[0];
-					setWeatherData({
-						temp: data.temp,
-						description: data.weather.description,
-						sunrise: data.sunrise,
-						sunset: data.sunset
-					})
-				})
-				.catch(err => {
-					console.log("Error: ", err);
-					console.log("Invalid submission");
-					setLocation({
-						city: "Location not found",
-						state: ""
-					});
+	// 	if (location.city !== "" && location.state !== "") {
+	// 		const url = `http://api.weatherstack.com/current?access_key=${process.env.REACT_APP_WEATHER_KEY}&query=New%20York`;
 
-					setWeatherData({
-						temp: "Error",
-						description: "Error",
-						sunrise: "Error",
-						sunset: "Error"
-					})
-				})
-		}
+	// 		axios.get(url)
+	// 			.then(res => {
+	// 				const data = res.data.data[0];
+	// 				setWeatherData({
+	// 					temp: data.temp,
+	// 					description: data.weather.description,
+	// 					sunrise: data.sunrise,
+	// 					sunset: data.sunset
+	// 				})
+	// 			})
+	// 			.catch(err => {
+	// 				console.log("Error: ", err);
+	// 				console.log("Invalid submission");
+	// 				setLocation({
+	// 					city: "Location not found",
+	// 					state: ""
+	// 				});
 
-	}, [location.city, location.state]);
+	// 				setWeatherData({
+	// 					temp: "Error",
+	// 					description: "Error",
+	// 					sunrise: "Error",
+	// 					sunset: "Error"
+	// 				})
+	// 			})
+	// 	}
+
+	// }, [location.city, location.state]);
 
 	const saveLocation = () => {
 		const found = savedLocations.find(loc => loc.city === location.city.toLowerCase());
