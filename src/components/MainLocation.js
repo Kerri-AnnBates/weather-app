@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from "react";
 import axios from "axios";
 import WeatherContext from "../context/WeatherContext";
 import cloudy from "../images/weather.png";
+import { getInitialLocation, getWeahter } from "../api/api";
 
 const MainLocation = () => {
 	const { location, setLocation, savedLocations, setSavedLocations } = useContext(WeatherContext);
@@ -12,49 +13,32 @@ const MainLocation = () => {
 		sunset: ""
 	});
 
-	// Get geo location
-	const getInitialLocation = () => {
-		return axios.get(`https://geo.ipify.org/api/v1?apiKey=${process.env.REACT_APP_IPDATA_KEY}&ipAddress=174.250.20.7`)
-			.then(res => {
-				console.log(res);
-				setLocation({ city: res.data.city, state: res.data.region_code });
-				return res.data;
-			})
-			.catch(err => {
-				console.log("Error:", err);
-			})
-	}
-
 	// Get weather
-	const getWeather = async () => {
-		const result = await getInitialLocation();
+	// const getWeather = async () => {
+	// 	const result = await getInitialLocation();
 
-		if (result) {
-			const url = `http://api.weatherstack.com/current?access_key=${process.env.REACT_APP_WEATHER_KEY}&query=New%20York`;
-			// const old = `https://api.weatherbit.io/v2.0/current?city=${result.city},${result.region_code}&key=${process.env.REACT_APP_WEATHER_KEY}`;
-			axios.get(url)
-				.then(res => {
-					// const data = res.data.data[0];
+	// 	if (result) {
+	// 		getWeahter(result.city)
+	// 			.then(res => {
+	// 				console.log(res);
+	// 			})
+	// 	} else {
+	// 		console.log("Unable to get location")
+	// 	}
 
-					// setWeatherData({
-					// 	temp: data.temp,
-					// 	description: data.weather.description,
-					// 	sunrise: data.sunrise,
-					// 	sunset: data.sunset
-					// })
-				})
-				.catch(err => {
-					console.log("Error: ", err);
-				})
-		} else {
-			console.log("Unable to get location")
-		}
-
-	}
+	// }
 
 	// Get geo location on load.
 	useEffect(() => {
-		getWeather();
+		// getWeather();
+		getInitialLocation()
+			.then(res => {
+				console.log(res);
+				getWeahter(res.city)
+					.then(weather => {
+						console.log(weather);
+					})
+			})
 	}, []);
 
 	// useEffect(() => {
