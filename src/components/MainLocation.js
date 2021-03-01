@@ -17,14 +17,14 @@ const MainLocation = () => {
 				});
 
 				// Get weather after location received.
-				getWeahter(data.city)
+				getWeahter(data.city, data.region)
 					.then(weather => {
-						// console.log(weather.data.current);
-						const data = weather.data.current;
+						console.log(weather.data.data[0]);
+						const data = weather.data.data[0];
 						setWeatherData({
-							temp: data.temperature,
-							description: data.weather_descriptions[0]
-						})
+							temp: data.temp,
+							description: data.weather.description
+						});
 					})
 					.catch(err => {
 						console.log(err);
