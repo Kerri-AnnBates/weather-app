@@ -18,8 +18,6 @@ const SearchForm = () => {
 		const city = userInput.split(', ')[0];
 		const state = userInput.split(', ')[1] || "";
 
-		console.log(city, state);
-
 		if (userInput !== "") {
 			getWeahter(city, state)
 				.then(weather => {

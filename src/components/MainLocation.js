@@ -10,7 +10,6 @@ const MainLocation = () => {
 		// Get geo location on load.
 		getInitialLocation()
 			.then(data => {
-				// console.log(data);
 				setLocation({
 					city: data.city,
 					state: data.region
@@ -19,8 +18,8 @@ const MainLocation = () => {
 				// Get weather after location received.
 				getWeahter(data.city, data.region)
 					.then(weather => {
-						console.log(weather.data.data[0]);
 						const data = weather.data.data[0];
+
 						setWeatherData({
 							temp: data.temp,
 							description: data.weather.description
