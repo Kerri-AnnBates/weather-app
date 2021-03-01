@@ -16,29 +16,34 @@ const SearchForm = () => {
 		e.preventDefault();
 
 		const city = userInput.split(', ')[0];
-		// const state = userInput.split(', ')[1];
+		const state = userInput.split(', ')[1] || "";
+
+		console.log(city, state);
 
 		if (userInput !== "") {
-			getWeahter(city)
+			getWeahter(city, state)
 				.then(weather => {
 
-					const weatherData = weather.data.current;
-					const locationData = weather.data.location;
+					const data = weather.data.data[0];
+					let city, state;
 
-					if (locationData.country.toLowerCase() === "us" || locationData.country.toLowerCase() === "united states of america") {
-						setLocation({ city: locationData.name, state: locationData.region });
+					if (data.country_code.toLowerCase() === "us") {
+						city = data.city_name;
+						state = data.state_code;
 					} else {
-						setLocation({ city: locationData.name, state: locationData.country });
+						city = data.city_name;
+						state = data.country_code;
 					}
 
+					setLocation({ city, state });
+
 					setWeatherData({
-						temp: weatherData.temperature,
-						description: weatherData.weather_descriptions[0]
-					})
+						temp: data.temp,
+						description: data.weather.description
+					});
 				})
 				.catch(err => {
 					alert("Invalid entry. Please enter valid city.");
-					return err;
 				});
 
 			setUserInput('');
