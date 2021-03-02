@@ -60,6 +60,12 @@ a {
 	box-shadow: 2px 2px 7px 0px rgba(0, 0, 0, 0.36);
 }
 
+.group:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
 // Main Section
 .main-section {
 	height: calc(100vh - 160px);
