@@ -1,4 +1,7 @@
 .search-form {
+	display: flex;
+	align-items: flex-end;
+
 	label {
 		display: none;
 		font-size: 1.6rem;
@@ -15,4 +18,11 @@
 		border: 1px solid #ccc;
 		border-radius: 5px;
 	}
+}
+
+.help-icon {
+	color: #585858;
+	margin-right: 10px;
+	font-size: 2rem;
+	padding-bottom: 5px;
 }

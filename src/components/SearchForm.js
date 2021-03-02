@@ -51,6 +51,7 @@ const SearchForm = () => {
 
 	return (
 		<div className="search-form">
+			<span className="help-icon"><i className="far fa-question-circle"></i></span>
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="search"> Search location:</label>
 				<input
