@@ -5,6 +5,7 @@ import { getWeahter } from "../api/api";
 const SearchForm = () => {
 	const { setLocation, setWeatherData } = useContext(WeatherContext);
 	const [userInput, setUserInput] = useState('');
+	const [errorMessage, setErrorMessage] = useState('');
 
 	// Handle change to seach form.
 	const handleChange = (e) => {
@@ -21,6 +22,7 @@ const SearchForm = () => {
 		if (userInput !== "") {
 			getWeahter(city, state)
 				.then(weather => {
+					setErrorMessage("");
 
 					const data = weather.data.data[0];
 					let city, state;
@@ -41,7 +43,8 @@ const SearchForm = () => {
 					});
 				})
 				.catch(err => {
-					alert("Invalid entry. Please enter valid city.");
+					// alert("Invalid entry. Please enter valid city.");
+					setErrorMessage("Invalid entry. Please enter valid city or city name with state/country code.");
 				});
 
 			setUserInput('');
@@ -50,7 +53,7 @@ const SearchForm = () => {
 	}
 
 	return (
-		<div className="search-form">
+		<div className="search-form group">
 			<span className="help-icon"><i className="far fa-question-circle"></i></span>
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="search"> Search location:</label>
@@ -62,6 +65,7 @@ const SearchForm = () => {
 					onChange={(e) => handleChange(e)} />
 				<button className="button">Search</button>
 			</form>
+			{errorMessage ? <div className="error-message">{errorMessage}</div> : null}
 		</div>
 	)
 }

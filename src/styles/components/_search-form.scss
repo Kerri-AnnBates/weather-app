@@ -1,6 +1,4 @@
 .search-form {
-	display: flex;
-	align-items: flex-end;
 
 	label {
 		display: none;
@@ -24,5 +22,15 @@
 	color: #585858;
 	margin-right: 10px;
 	font-size: 2rem;
-	padding-bottom: 5px;
+	float: left;
+	padding-top: 5px;
+	
+	@media (min-width: 700px) {
+		padding-top: 25px;
+	}
+}
+
+.error-message {
+	color: firebrick;
+    font-size: 1.4rem;
 }
