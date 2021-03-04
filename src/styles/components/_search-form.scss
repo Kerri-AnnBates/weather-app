@@ -39,12 +39,24 @@
 	background-color: #fff;
 	padding: 5px;
 	border-radius: 4px;
+	font-size: 1.4rem;
 	position: absolute;
 	width: 300px;
-	top: 100%;
+	top: 120%;
 	left: -10px;
 	// width: 100%;
 	// max-width: 300px;
+
+	&:after {
+		content: "";
+		position: absolute;
+		bottom: 100%;
+		left: 7%;
+		margin-left: -8px;
+		border-width: 8px;
+		border-style: solid;
+		border-color: transparent transparent white transparent;
+	}
 }
 
 .error-message {

@@ -55,7 +55,7 @@ const SearchForm = () => {
 	return (
 		<div className="search-form group">
 			<span className="help-icon"><i className="far fa-question-circle"></i>
-				<p className="help-message shadow">Enter a city name to search for weather.</p>
+				<p className="help-message shadow">Enter a city name to search for weather. For a more specifi entry, entry should be in the format of city and state code, for example: "City, St" or city and country code: "Paris, Fr".</p>
 			</span>
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="search"> Search location:</label>
