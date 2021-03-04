@@ -24,9 +24,43 @@
 	font-size: 2rem;
 	float: left;
 	padding-top: 5px;
+	position: relative;
+
+	&:hover {
+		cursor: pointer;
+	}
 	
 	@media (min-width: 700px) {
 		padding-top: 25px;
+	}
+}
+
+.help-message {
+	background-color: #fff;
+	padding: 5px;
+	border-radius: 4px;
+	font-size: 1.4rem;
+	position: absolute;
+	width: 300px;
+	top: 120%;
+	left: -10px;
+	display: none;
+	// width: 100%;
+	// max-width: 300px;
+
+	&.show {
+		display: block;
+	}
+
+	&:after {
+		content: "";
+		position: absolute;
+		bottom: 100%;
+		left: 7%;
+		margin-left: -8px;
+		border-width: 8px;
+		border-style: solid;
+		border-color: transparent transparent white transparent;
 	}
 }
 

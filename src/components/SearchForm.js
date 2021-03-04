@@ -6,6 +6,13 @@ const SearchForm = () => {
 	const { setLocation, setWeatherData } = useContext(WeatherContext);
 	const [userInput, setUserInput] = useState('');
 	const [errorMessage, setErrorMessage] = useState('');
+	const [showHelp, setShowHelp] = useState(false);
+
+
+	// Toggle help box
+	const toggleHelp = () => {
+		setShowHelp(!showHelp);
+	}
 
 	// Handle change to seach form.
 	const handleChange = (e) => {
@@ -54,7 +61,9 @@ const SearchForm = () => {
 
 	return (
 		<div className="search-form group">
-			<span className="help-icon"><i className="far fa-question-circle"></i></span>
+			<span className="help-icon"><i onClick={toggleHelp} className="far fa-question-circle"></i>
+				<p className={`help-message shadow ${showHelp && "show"}`}>Enter a city name to search for weather. For a more specific entry, entry should be in the format of city and state code, for example: "City, St" or city and country code: "Paris, Fr".</p>
+			</span>
 			<form onSubmit={handleSubmit}>
 				<label htmlFor="search"> Search location:</label>
 				<input
